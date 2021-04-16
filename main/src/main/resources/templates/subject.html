@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: azure;
+            }
+        </style>
+    <title>Предметы</title>
+</head>
+<body>
+<th:block th:insert="fragments/header.html :: header"/>
+    <div class="container" style="padding-top: 2%">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Здесь можно добавить новый предмет!</h1>
+                    <br>
+                    <form th:action="@{/user/add/new/subject}" th:object="${subject}" method="post">
+                        <label>
+                            <input class="form-control" th:type="text" th:name="title" th:field="*{title}" th:placeholder="предмет">
+                        </label>
+                        <br><br>
+                        <label>
+                            <input class="form-control" type="text" name="TeacherName" th:field="*{teacherName}" th:placeholder="учитель">
+                        </label>
+                        <br><br>
+                            <input class="btn btn-primary" type="submit" value="сохранить">
+                    </form><br>
+            </div>
+            <div class="col-md-6" style="padding-top: 7.5%">
+                <table class="table table-hover table-sm">
+                    <thead>
+                    <tr>
+                        <th>Предмет</th>
+                        <th>Удаление</th>
+                        <th>Редактирование</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="subject : ${allSubject}">
+                        <td><a th:href="@{/edit/subject/{uid}(uid=${subject.id})}"> <span th:text="${subject.title}"></span></a></td>
+                        <td><a class="btn btn-warning btn-sm disabled" th:href="@{/delete/subject/{uid}(uid=${subject.id})}">изменить</a></td>
+                        <td><a class="btn btn-danger btn-sm disabled" th:href="@{/delete/subject/{uid}(uid=${subject.id})}">удалить</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+</html>

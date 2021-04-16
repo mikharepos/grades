@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: azure;
+        }
+    </style>
+    <title>Главная</title>
+</head>
+<body>
+<th:block th:insert="fragments/header.html :: header"/>
+<div class="container" style="padding-top: 2%">
+    <h2 style="font-family: 'Arial Black',serif">Это твой профиль</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Имя: <span th:text="${user.firstName}"></span></h5>
+            <h5>Фамилия: <span th:text="${user.lastName}"></span></h5>
+            <h5>Логин: <span th:text="${user.login}"></span></h5>
+            <h5>ДР: <span th:text="${user.birthDate}"></span></h5>
+            <p>Скоро будет добавлена возможность добавления фото профиля</p>
+            <p>Скоро будет добавлена возможность редактирования профиля</p>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+          integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: azure;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<th:block th:insert="fragments/header.html :: header"/>
+
+<div class="container" style="padding-top: 2%">
+
+<h1 th:text="${subject.title}"></h1><br>
+
+<form th:action="@{/save/subject/{uid}(uid=${subject.id})}" th:object="${grades}" method="POST">
+    <label>
+        <input class="form-control" type="text" th:field="*{grade}" th:placeholder="оценка" pattern="^[0-9]+$" required>
+    </label>
+    <br><br>
+    <input class="btn btn-outline-danger" type="submit" value="сохранить">
+</form>
+<br>
+<table class="table table-hover table-sm">
+    <thead>
+    <tr>
+        <th>оценка</th>
+        <th>действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGrades : ${allGrades}">
+        <td><span th:text="${allGrades.grade}"></span></td>
+        <td><a class="btn btn-warning btn-sm" th:href="@{/delete/grade/{uid}(uid=${allGrades.gradeId})}">удалить</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

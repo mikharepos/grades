@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<th:block th:fragment="header">
+    <nav class="navbar navbar-light" style="background: azure">
+        <form class="container-fluid justify-content-center" th:action="@{/logout}" method="post">
+            <div class="btn-group">
+                <button class="btn btn-outline-secondary mr-2" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
+                    Меню
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/home}">Главная</a>
+                    <a class="dropdown-item" th:href="@{/user/profile}">Профиль</a>
+                    <a class="dropdown-item" th:href="@{/user/new/subject}">Добавить предмет</a>
+                    <a class="dropdown-item" th:href="@{/user/all/Subjects}">Все предметы</a>
+                </div>
+            </div>
+            <a class="btn btn-outline-secondary mr-2" type="button" th:href="@{/top}">Рейтинг</a>
+            <button class="btn btn-outline-secondary" type="submit">Выйти</button>
+        </form>
+    </nav>
+</th:block>
+
+</html>

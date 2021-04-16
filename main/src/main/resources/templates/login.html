@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+            integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+            body {
+                background-color: azure;
+            }
+        </style>
+        <title>Дневник</title>
+    </head>
+    <body>
+        <div class="container" style="padding-top: 2%">
+            <H2>Страница входа</H2><br>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-3" style="padding-top: 10%">
+                        <div th:if="${param.error}">
+                            <p style="color: red">Invalid username and password.</p>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <p style="color:red">You have been logged out.</p>
+                        </div>
+                        <form th:action="@{/login}" method="POST">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><span class="material-icons">mood</span></span>
+                                <input type="text" class="form-control" placeholder="Логин" name="username" aria-label="" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><span class="material-icons">vpn_key</span></span>
+                                <input type="password" class="form-control" placeholder="Пароль" name="password" aria-label="" required>
+                            </div>
+                            <div class="container-fluid" style="text-align: center">
+                                <a class="btn btn-primary" type="button" style="width: 48%" th:href="@{/get/registration}">Регистрация</a>
+                                <input class="btn btn-primary" type="submit" value="Вход" style="width: 48%"/>
+                            </div><br>
+                        </form>
+
+                        <div class="container-fluid" style="text-align: center">
+                            <a class="btn btn-outline-danger btn-block disabled" aria-disabled="true" type="button" th:href="@{/new/subject}">Я забывака</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    </body>
+</html>
